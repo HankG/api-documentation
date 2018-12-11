@@ -44,6 +44,12 @@ GET /api/v1/search/users
 ]
 ~~~
 
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 422         | Search request could not be processed |
+
 ## Search for posts
 
 Please note that, at this moment, this route only allows searching for posts by tags. However, this may be extended in the future.
@@ -107,3 +113,9 @@ GET /api/v1/search/posts
   }
 ]
 ~~~
+
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 422         | Search request could not be processed |
