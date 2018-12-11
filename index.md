@@ -37,16 +37,23 @@ Unless otherwise noted, bodies submitted via `POST` requests should be JSON enco
 
 ## Pagination
 
-Some responses, especially those with large response sets or with a larger server load, might respond in a paginated way. Paginated responses will contain a `Link` header with URLs to load additional pages/sets:
+Some responses, especially those with large response sets or with a larger server load, might respond in a paginated way. Paginated responses will contain a `links` field with URLs to load additional pages/sets and the data in a `data` field.  Below is an example:
 
 ~~~
-Link: <https://example.com/api/v1/example?page=2>; rel="next",
-      <https://example.com/api/v1/example?page=42>; rel="last"
+{
+  "links": {
+    "previous": "http://localhost:3000/api/v1/user/posts?after=2018-12-08T23:25:06.312Z",
+    "next": "http://localhost:3000/api/v1/user/posts?before=2018-12-08T22:49:30.397Z"
+  },
+  "data": ...
+}
 ~~~
 
 *Note*: Line breaks were added to increase the readability, the actual header will not contain line breaks.
 
-`first`, `previous`, `next` and `last` are possible `rel`-values. Please **do not try to guess the pagination URLs**, some resources like streams, might use timestamps or GUIDs instead of an increasing page counter.
+`first`, `previous`, `next` and `last` are possible `rel`-values. Please **do not try to guess the pagination URLs**, some resources like streams, might use timestamps or GUIDs instead of an increasing page counter. 
+
+Any endpoint that supports pagination will also support the `per_page` query parameter to specify a maximum number of elements to request.  If it is not provided the end point will use its default value.  Each endpoint will have a largest value for this field as well.  If a request is made for a value in excess it will not return more than that endpoint's maximum number of per-page elements.
 
 ## API support
 
