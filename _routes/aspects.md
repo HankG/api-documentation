@@ -51,6 +51,12 @@ GET /api/v1/aspects/:aspect_id
 }
 ~~~
 
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 404         | Aspect with provided ID could not be found |
+
 ## Create new aspect
 
 ### Request
@@ -77,6 +83,13 @@ POST /api/v1/aspects
   "chat_enabled": true
 }
 ~~~
+
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 422         | Failed to create the aspect                |
+
 
 ## Edit an aspect
 
@@ -112,6 +125,13 @@ PATCH /api/v1/aspects/:aspect_id
 }
 ~~~
 
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 404         | Aspect with provided ID could not be found |
+| 422         | Failed to update the aspect                |
+
 ## Delete an aspect
 
 ### Request
@@ -125,5 +145,11 @@ DELETE /api/v1/aspects/:aspect_id
 ~~~
 Status: 204 No Content
 ~~~
+
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 422         | Failed to delete the aspect                |
 
 [contacts]: {{ site.baseurl }}/routes/contacts.html
