@@ -77,6 +77,12 @@ GET /api/v1/photos/:photo_guid
 }
 ~~~
 
+### Errors
+
+| Status code | Error reason                                |
+| ----------- | ------------------------------------------- |
+| 404         | Photo with provided guid could not be found |
+
 ## Upload photo
 
 `pending` might get used if the uploaded photo is intended to get used as a post attachment. Do not upload *unused* images since pending uploads might get deleted after some timeout without further warnings.
@@ -115,6 +121,12 @@ Photo file as POST multipart payload with a matching mime-type (use `application
 }
 ~~~
 
+### Errors
+
+| Status code | Error reason                                |
+| ----------- | ------------------------------------------- |
+| 422         | Failed to create the photo                  |
+
 ## Delete a photo
 
 Note that deleting a photo will not remove items where it was attached to, like posts.
@@ -130,3 +142,10 @@ DELETE /api/v1/photos/:photo_guid
 ~~~
 Status: 204 No Content
 ~~~
+
+### Errors
+
+| Status code | Error reason                                |
+| ----------- | ------------------------------------------- |
+| 404         | Photo with provided guid could not be found |
+
