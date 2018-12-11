@@ -75,6 +75,12 @@ GET /api/v1/notifications
 ]
 ~~~
 
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 422         | Couldn't process the notifications request |
+
 ## Get information about a single notification
 
 *Note*: This also marks the given notification as read.
@@ -118,6 +124,13 @@ GET /api/v1/notifications/:notification_id
   ]
 }
 ~~~
+
+### Errors
+
+| Status code | Error reason                                       |
+| ----------- | -------------------------------------------------- |
+| 404         | Notification with provided guid could not be found |
+| 422         | Couldn't process the notifications request         |
 
 ## Mark a notification as unread
 
@@ -165,3 +178,9 @@ PATCH /api/v1/notifications/:notification_id
   ]
 }
 ~~~
+
+### Errors
+
+| Status code | Error reason                                       |
+| ----------- | -------------------------------------------------- |
+| 422         | Couldn't process the notifications request         |
