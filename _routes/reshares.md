@@ -37,6 +37,12 @@ GET /api/v1/posts/:post_guid/reshares
 ]
 ~~~
 
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 404         | Post with provided guid could not be found |
+
 ## Reshare a post
 
 Resharing is effectively creating a new post, which is why this method returns a post object.
@@ -82,3 +88,10 @@ POST /api/v1/posts/:post_guid/reshares
   }
 }
 ~~~
+
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 404         | Post with provided guid could not be found |
+| 422         | Failed to reshare                          |
