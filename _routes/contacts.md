@@ -33,12 +33,24 @@ GET /api/v1/aspects/:aspect_id/contacts
 ]
 ~~~
 
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 404         | Aspect with provided ID could not be found |
+
+
 ## Add a user to an aspect
 
 ### Request
 
 ~~~
-POST /api/v1/aspects/:aspect_id/contacts/:person_guid
+POST /api/v1/aspects/:aspect_id/contacts
+~~~
+~~~json
+{
+  "person_guid": "f50ffc00b188013355e3705681972339"
+}
 ~~~
 
 ### Response
@@ -46,6 +58,14 @@ POST /api/v1/aspects/:aspect_id/contacts/:person_guid
 ~~~
 Status: 204 No Content
 ~~~
+
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 404         | Aspect with provided ID could not be found |
+| 422         | Failed to add user to aspect               |
+
 
 ## Remove a user from an aspect
 
@@ -60,5 +80,12 @@ DELETE /api/v1/aspects/:aspect_id/contacts/:person_guid
 ~~~
 Status: 204 No Content
 ~~~
+
+### Errors
+
+| Status code | Error reason                               |
+| ----------- | ------------------------------------------ |
+| 404         | Aspect with provided ID could not be found |
+| 422         | Failed to remove user from aspect          |
 
 [aspects]: {{ site.baseurl }}/routes/aspects.html
